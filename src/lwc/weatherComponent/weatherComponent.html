@@ -1,0 +1,27 @@
+<template>
+    <lightning-card>
+        <div class="slds-p-around_medium">
+            <template if:true={weatherData}>
+                <h1 class="forecast-title">5-Day Weather Forecast for {city}</h1>
+                <div class="weather-container">
+                    <div class="forecast-grid">
+                        <template for:each={forecastData} for:item="day">
+                            <div key={day.date} class="forecast-item">
+                                <img src={day.weatherCode} alt="Weather Icon" class="weather-icon" />
+                                <p><strong>{day.dayOfWeek}</strong></p>
+                                <div class="temperature">
+                                    <span class="temp-min">Min<br>{day.tempMin}°C</span>
+                                    <span class="temp-max">Max<br>{day.tempMax}°C</span>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+
+            <template if:true={error}>
+                <p class="slds-text-color_error">{error}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
